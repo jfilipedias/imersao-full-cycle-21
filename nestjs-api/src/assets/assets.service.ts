@@ -1,8 +1,8 @@
-import { Injectable } from '@nestjs/common';
-import { CreateAssetDto } from './dto/create-asset.dto';
 import type { Model } from 'mongoose';
-import { Asset } from './entities/asset.entity';
+import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
+import { CreateAssetDto } from './dto/create-asset.dto';
+import { Asset } from './entities/asset.entity';
 
 @Injectable()
 export class AssetsService {

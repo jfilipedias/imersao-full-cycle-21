@@ -1,6 +1,6 @@
 import crypto from 'node:crypto';
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import type { HydratedDocument } from 'mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 export type AssetDocument = HydratedDocument<Asset>;
 
