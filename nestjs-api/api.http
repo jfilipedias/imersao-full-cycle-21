@@ -42,3 +42,17 @@ Content-Type: application/json
   "shares": 100,
 }
 
+###
+POST http://localhost:3000/orders
+Content-Type: application/json
+
+{
+  "walletId": "{{ walletId }}",
+  "assetId": "{{ assetId }}",
+  "shares": 10,
+  "price": 100,
+  "type": "BUY" 
+}
+
+###
+GET http://localhost:3000/orders?walletId={{ walletId }}
