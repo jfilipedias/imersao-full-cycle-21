@@ -1,7 +1,7 @@
 import type { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { CreateWalletDto } from './dto/create-wallet.dto';
+import { type CreateWalletAssetDto } from './dto/create-wallet-asset.dto';
 import { Wallet } from './entities/wallet.entity';
 import { WalletAsset } from './entities/wallet-asset.entity';
 
@@ -14,8 +14,8 @@ export class WalletsService {
     private walletAssetSchema: Model<WalletAsset>,
   ) {}
 
-  create(createWalletDto: CreateWalletDto) {
-    return this.walletSchema.create(createWalletDto);
+  create() {
+    return this.walletSchema.create();
   }
 
   findAll() {
@@ -26,15 +26,11 @@ export class WalletsService {
     return this.walletSchema.findById(id);
   }
 
-  createWalletAsset(walletAsset: {
-    walletId: string;
-    assetId: string;
-    shares: number;
-  }) {
-    this.walletAssetSchema.create({
-      wallet: walletAsset.walletId,
-      asset: walletAsset.assetId,
-      shares: walletAsset.shares,
+  createWalletAsset(id: string, createWalletAssetDto: CreateWalletAssetDto) {
+    return this.walletAssetSchema.create({
+      wallet: id,
+      asset: createWalletAssetDto.assetId,
+      shares: createWalletAssetDto.shares,
     });
   }
 }
