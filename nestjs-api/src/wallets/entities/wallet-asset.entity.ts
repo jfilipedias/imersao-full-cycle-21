@@ -4,7 +4,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Asset, type AssetDocument } from 'src/assets/entities/asset.entity';
 import { type WalletDocument } from './wallet.entity';
 
-export type WalletAssetDcoument = HydratedDocument<WalletAsset>;
+export type WalletAssetDocument = HydratedDocument<WalletAsset>;
 
 @Schema({ timestamps: true })
 export class WalletAsset {

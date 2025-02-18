@@ -1,10 +1,10 @@
-import type { Model } from 'mongoose';
+import mongoose, { type Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectConnection, InjectModel } from '@nestjs/mongoose';
 import { type CreateWalletAssetDto } from './dto/create-wallet-asset.dto';
 import { Wallet } from './entities/wallet.entity';
 import { WalletAsset } from './entities/wallet-asset.entity';
-import type mongoose from 'mongoose';
+import type { Asset } from '../assets/entities/asset.entity';
 
 @Injectable()
 export class WalletsService {
@@ -28,7 +28,9 @@ export class WalletsService {
   findOne(id: string) {
     return this.walletSchema
       .findById(id)
-      .populate([{ path: 'assets', populate: 'asset' }]);
+      .populate([{ path: 'assets', populate: ['asset'] }]) as Promise<
+      (Wallet & { assets: (WalletAsset & { asset: Asset })[] }) | null
+    >;
   }
 
   async createWalletAsset(
