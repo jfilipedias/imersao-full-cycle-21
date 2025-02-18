@@ -34,7 +34,7 @@ GET http://localhost:3000/wallets
 GET http://localhost:3000/wallets/{{ walletId }}
 
 ###
-POST http://localhost:3000/wallets/{{ walletId }}/asset
+POST http://localhost:3000/wallets/{{ walletId }}/assets
 Content-Type: application/json
 
 {
